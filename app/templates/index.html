@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-    <title>Meu Leitor de PDF</title>
+    <title>Leitor de arquivos</title>
 </head>
+
 <body>
     <div class="main-container">
         <div class="logo-title-container">
             <img class="logo" src="{{ url_for('static', filename='Icon.png') }}" alt="Logo">
-            <h1 class="title">Meu leitor de PDF</h1>
+            <h1 class="title">Leitor de arquivos</h1>
         </div>
 
         <form class="upload-form" action="/" method="POST" enctype="multipart/form-data">
-            <label class="file-input" for="pdf">Selecione um PDF para carregar:</label>
+            <label class="file-input" for="pdf">Selecione um arquivo para carregar:</label>
             <input type="file" name="pdf" id="pdf" accept=".pdf">
             <br>
             <button class="submit-button" type="submit">Enviar</button>
         </form>
 
-        <h2>PDFs Enviados</h2>
+        <h2>Arquivos Enviados</h2>
         <ul class="pdf-list">
             {% for pdf_file in pdf_files %}
                 <li class="pdf-list-item"><a href="{{ url_for('serve_pdf', filename=pdf_file) }}">{{ pdf_file }}</a></li>
